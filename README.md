@@ -4,7 +4,7 @@
 
 # Letter Man
 
-LetterMan is a small Java based Event System. It works on a consumer interface basis with handlers ports and filters.
+LetterMan is a small Java based Event System. It works on a consumer class basis with handlers, ports and filters.
 
 ## Classes
 
