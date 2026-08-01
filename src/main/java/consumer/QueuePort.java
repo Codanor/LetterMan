@@ -14,7 +14,7 @@ public class QueuePort extends A_EventPort {
     private Queue<A_Event> _queue;
 
     @Override
-    public void consume(A_Event event) {
+    protected void p_consume(A_Event event) {
         _queue.add(event);
     }
 

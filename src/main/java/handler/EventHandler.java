@@ -1,6 +1,6 @@
 package handler;
 
-import consumer.I_EventConsumer;
+import consumer.A_EventConsumer;
 import events.A_Event;
 import filter.EventFilter;
 
@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public class EventHandler implements I_EventConsumer {
+public class EventHandler extends A_EventConsumer {
 
     public EventHandler() {
         _filter = null;
@@ -23,19 +23,20 @@ public class EventHandler implements I_EventConsumer {
 
     private EventFilter _filter;
 
-    private final Set<I_EventConsumer> _CONSUMER;
+    private final Set<A_EventConsumer> _CONSUMER;
 
     @Override
-    public void consume(A_Event event) {
+    protected void p_consume(A_Event event) {
+        if (event.isConsumed()) return;
         if (_filter != null && !_filter.filter(event)) return;
 
-        for (I_EventConsumer consumer : _CONSUMER) consumer.consume(event);
+        for (A_EventConsumer consumer : _CONSUMER) consumer.consume(event);
     }
 
-    public void register(I_EventConsumer consumer) {
+    public void register(A_EventConsumer consumer) {
         _CONSUMER.add(consumer);
     }
-    public boolean remove(I_EventConsumer consumer) {
+    public boolean remove(A_EventConsumer consumer) {
         return _CONSUMER.remove(consumer);
     }
 

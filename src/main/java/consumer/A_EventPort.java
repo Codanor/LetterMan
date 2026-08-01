@@ -6,7 +6,7 @@ import handler.EventHandler;
 
 import java.util.*;
 
-public abstract class A_EventPort implements I_EventConsumer {
+public abstract class A_EventPort extends A_EventConsumer {
 
     public A_EventPort() {
         p_SUBSCRIPTIONS = new HashSet<>();

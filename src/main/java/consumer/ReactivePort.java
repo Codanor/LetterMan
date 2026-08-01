@@ -17,7 +17,7 @@ public class ReactivePort extends A_EventPort {
     }
 
     @Override
-    public void consume(A_Event event) {
+    protected void p_consume(A_Event event) {
         _reaction.accept(event);
     }
 
